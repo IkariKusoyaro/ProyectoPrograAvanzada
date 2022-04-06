@@ -1,14 +1,76 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.ventadeentradas;
+
+
+
 
 /**
  *
  * @author Camilo
  */
 public class Entrada {
+    private int numSerie;
+    private int numAsiento;
+    private String rutPersona;  //persona a la que pertenece la entrada, si es 0
+                                //la entrada no esta asignada
+    private int idSector;  //sector al que pertenece la entrada
+    private int idEvento;  //evento al que pertenece la entrada
     
+    //constructor por parametros
+    public Entrada(int numSerie, int numAsiento, String rutPersona,int idSector, int idEvento){
+        this.numSerie = numSerie;
+        this.idEvento = idEvento;
+        this.idSector = idSector;
+        this.numAsiento = numAsiento;
+        this.rutPersona = rutPersona;
+    }
+    
+    //constructor por String
+    public Entrada(CSV archivo, String linea){
+        numSerie = Integer.parseInt(archivo.get_csvField(linea,0));
+        idEvento = Integer.parseInt(archivo.get_csvField(linea, 4));
+        idSector = Integer.parseInt(archivo.get_csvField(linea, 3));
+        numAsiento = Integer.parseInt(archivo.get_csvField(linea,1));
+        rutPersona = archivo.get_csvField(linea, 2);
+    }
+
+    
+    public int getIdEvento() {
+        return idEvento;
+    }
+
+    public void setIdEvento(int idEvento) {
+        this.idEvento = idEvento;
+    }
+
+    public int getNumSerie() {
+        return numSerie;
+    }
+
+    public void setNumSerie(int numSerie) {
+        this.numSerie = numSerie;
+    }
+
+    public int getNumAsiento() {
+        return numAsiento;
+    }
+
+    public void setNumAsiento(int numAsiento) {
+        this.numAsiento = numAsiento;
+    }
+
+    public String getRutPersona() {
+        return rutPersona;
+    }
+
+    public void setRutPersona(String rutPersona) {
+        this.rutPersona = rutPersona;
+    }
+
+    public int getIdSector() {
+        return idSector;
+    }
+
+    public void setIdSector(int idSector) {
+        this.idSector = idSector;
+    }
 }
