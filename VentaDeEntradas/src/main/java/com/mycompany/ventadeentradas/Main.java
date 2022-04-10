@@ -29,6 +29,7 @@ public class Main {
         //importar entradas
         Entrada entradaAgregar;
         CSV archivoEntradas = new CSV("Entradas");
+        CSV archivoEventos = new CSV("Eventos");
         String linea = archivoEntradas.firstLine();
         linea = archivoEntradas.nextLine();     //Primera Linea Basura
         
@@ -50,6 +51,13 @@ public class Main {
             
             linea = archivoEntradas.nextLine();
         }
+        
+        
+        /*ArrayList<Entrada> a = new ArrayList();
+        entradaAgregar = new Entrada(1,2,"20",3,4);
+        a.add(entradaAgregar);
+        if(a.contains(entradaAgregar))System.out.println("a");
+        */
         
         
         
