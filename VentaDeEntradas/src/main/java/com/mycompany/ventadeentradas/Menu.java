@@ -50,7 +50,7 @@ public class Menu {
         System.out.println("Ingrese el Mes del evento ");
         eventoAux.setMes(Integer.parseInt(usuario.readLine()));
         System.out.println("Ingrese el Año del evento ");
-        eventoAux.setAño(Integer.parseInt(usuario.readLine()));
+        eventoAux.setAnio(Integer.parseInt(usuario.readLine()));
         
         
         mapaEventos.put(eventoAux.getEventId(),eventoAux);

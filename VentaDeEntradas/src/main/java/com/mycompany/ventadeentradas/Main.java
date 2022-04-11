@@ -15,7 +15,7 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) throws FileNotFoundException, IOException {
         
-        int numSerieActual = 0;
+        int numSerieActual = 1;
         
         HashMap<Integer,Evento> mapaEventos;
         mapaEventos = new HashMap();
@@ -72,7 +72,7 @@ public class Main {
                 eventoAux.setNombreEvento(archivoEventos.get_csvField(lineaEventos, 1));
                 eventoAux.setDia(Integer.parseInt(archivoEventos.get_csvField(lineaEventos, 2)));
                 eventoAux.setMes(Integer.parseInt(archivoEventos.get_csvField(lineaEventos, 3)));
-                eventoAux.setAño(Integer.parseInt(archivoEventos.get_csvField(lineaEventos, 4)));
+                eventoAux.setAnio(Integer.parseInt(archivoEventos.get_csvField(lineaEventos, 4)));
             }
             else{
                 eventoAux = new Evento(archivoEntradas,lineaEventos);

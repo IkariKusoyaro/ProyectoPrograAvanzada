@@ -14,31 +14,31 @@ public class Persona {
     private String nombre;
     private int dia;
     private int mes;
-    private int año;
-    private String contraseña;      //como la hago inaccesible?
+    private int anio;
+    private String contrasenia;      //como la hago inaccesible?
     private int presupuesto;
     private ArrayList<String> listaMusical;     //lista con los generos musicales favoritos de la persona
 
     
-    public Persona(String rut, String nombre, int dia, int mes, int año, String contraseña, int presupuesto) {
+    public Persona(String rut, String nombre, int dia, int mes, int anio, String contrasenia, int presupuesto) {
         this.rut = rut;
         this.nombre = nombre;
         this.dia = dia;
         this.mes = mes;
-        this.año = año;
-        this.contraseña = contraseña;
+        this.anio = anio;
+        this.contrasenia = contrasenia;
         this.presupuesto = presupuesto;
         listaMusical = new ArrayList();
         
     }
     
     
-    public Persona(String nombre, int dia, int mes, int año, String contraseña, int presupuesto, ArrayList lista) {
+    public Persona(String nombre, int dia, int mes, int anio, String contrasenia, int presupuesto, ArrayList lista) {
         this.nombre = nombre;
         this.dia = dia;
         this.mes = mes;
-        this.año = año;
-        this.contraseña = contraseña;
+        this.anio = anio;
+        this.contrasenia = contrasenia;
         this.presupuesto = presupuesto;
         listaMusical = new ArrayList();
         listaMusical.addAll(lista);
@@ -76,20 +76,20 @@ public class Persona {
         this.mes = mes;
     }
 
-    public int getAño() {
-        return año;
+    public int getAnio() {
+        return anio;
     }
 
-    public void setAño(int año) {
-        this.año = año;
+    public void setAnio(int anio) {
+        this.anio = anio;
     }
     
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasenia() {
+        return contrasenia;
     }
 
     public int getPresupuesto() {

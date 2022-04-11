@@ -14,17 +14,17 @@ public class Evento {
     private String nombreEvento; //nombre del evento
     private int dia;
     private int mes;
-    private int año;
+    private int anio;
     private HashMap<Integer,Entrada> mapaEntradas;  //Mapa de entradas por id
     private ArrayList<Entrada> listaEntradas;
 
     //Contructor por parametros
-    public Evento(int eventId, String nombreEvento, int dia, int mes, int año) {
+    public Evento(int eventId, String nombreEvento, int dia, int mes, int anio) {
         this.eventId = eventId;
         this.nombreEvento = nombreEvento;
         this.dia = dia;
         this.mes = mes;
-        this.año = año;
+        this.anio = anio;
         mapaEntradas = new HashMap();
         listaEntradas = new ArrayList();
     }
@@ -35,7 +35,7 @@ public class Evento {
         nombreEvento = archivo.get_csvField(linea, 1);
         dia = Integer.parseInt(archivo.get_csvField(linea, 2));
         mes = Integer.parseInt(archivo.get_csvField(linea, 3));
-        año = Integer.parseInt(archivo.get_csvField(linea, 4));
+        anio = Integer.parseInt(archivo.get_csvField(linea, 4));
         mapaEntradas = new HashMap();
         listaEntradas = new ArrayList();
     }
@@ -78,12 +78,12 @@ public class Evento {
         this.mes = mes;
     }
 
-    public int getAño() {
-        return año;
+    public int getAnio() {
+        return anio;
     }
 
-    public void setAño(int año) {
-        this.año = año;
+    public void setAnio(int anio) {
+        this.anio = anio;
     }
     
     public int getEventId() {
@@ -126,7 +126,7 @@ public class Evento {
     public void mostrarEvento(){
         System.out.println("ID Evento: "+ eventId);
         System.out.println("Nombre Evento: "+ nombreEvento);
-        System.out.println("Fecha Evento: "+ dia + "/" + mes + "/" + año);
+        System.out.println("Fecha Evento: "+ dia + "/" + mes + "/" + anio);
         
     }
     
