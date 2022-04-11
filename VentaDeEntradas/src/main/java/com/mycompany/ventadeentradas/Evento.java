@@ -16,6 +16,7 @@ public class Evento {
     private int mes;
     private int año;
     private HashMap<Integer,Entrada> mapaEntradas;  //Mapa de entradas por id
+    private ArrayList<Entrada> listaEntradas;
 
     //Contructor por parametros
     public Evento(int eventId, String nombreEvento, int dia, int mes, int año) {
@@ -25,13 +26,41 @@ public class Evento {
         this.mes = mes;
         this.año = año;
         mapaEntradas = new HashMap();
+        listaEntradas = new ArrayList();
+    }
+    
+    //Constructor desde String
+    public Evento(CSV archivo, String linea){
+        eventId = Integer.parseInt(archivo.get_csvField(linea, 0));
+        nombreEvento = archivo.get_csvField(linea, 1);
+        dia = Integer.parseInt(archivo.get_csvField(linea, 2));
+        mes = Integer.parseInt(archivo.get_csvField(linea, 3));
+        año = Integer.parseInt(archivo.get_csvField(linea, 4));
+        mapaEntradas = new HashMap();
+        listaEntradas = new ArrayList();
     }
     
     //constructor sin parametros
     public Evento(){
         mapaEntradas = new HashMap();
+        listaEntradas = new ArrayList();
     }
     
+    
+    //******
+    
+    
+    //constructor con cantidad de entradas fija
+    public Evento(int numEntradas, int numSerieActual,int idEvento){
+        mapaEntradas = new HashMap();
+        listaEntradas = new ArrayList();
+        for(int i = 0; i < numEntradas;i++){
+            Entrada entradaAux = new Entrada(numSerieActual,(i+1),"0",1,idEvento);
+            mapaEntradas.put(numSerieActual, entradaAux);
+            listaEntradas.add(entradaAux);
+            numSerieActual++;
+        }
+    }
     
     public int getDia() {
         return dia;
@@ -76,6 +105,44 @@ public class Evento {
     //metodos
     public void addEntrada(Entrada aAgregar){
         mapaEntradas.put(aAgregar.getNumSerie(), aAgregar);
+        listaEntradas.add(aAgregar);
     }
     
+    
+    
+    
+    //Mostrar Todas Las Entradas del evento
+    public void mostrarEntradas(){   
+        System.out.println("");
+        System.out.println("EVENTO " + nombreEvento);
+        for(int i = 0;i < listaEntradas.size();i++){
+            System.out.println("Entrada " + (i+1));
+            listaEntradas.get(i).mostrarEntrada(nombreEvento);
+            
+        }
+    }
+    
+    //mostrar Evento
+    public void mostrarEvento(){
+        System.out.println("ID Evento: "+ eventId);
+        System.out.println("Nombre Evento: "+ nombreEvento);
+        System.out.println("Fecha Evento: "+ dia + "/" + mes + "/" + año);
+        
+    }
+    
+    //buscar Entrada en HashMap
+    public Entrada buscarEntrada(int idEntrada){
+        if(mapaEntradas.containsKey(idEntrada)){
+            return mapaEntradas.get(idEntrada);
+        }
+        else{
+            return null;
+        }
+    }
+    
+    
+    
+    
+    //Mostrar Todas las Entradas de un evento especifico
+    //codigo
 }

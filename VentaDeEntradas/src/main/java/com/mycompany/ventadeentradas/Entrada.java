@@ -15,6 +15,7 @@ public class Entrada {
     private int idSector;  //sector al que pertenece la entrada
     private int idEvento;  //evento al que pertenece la entrada
     
+    
     //constructor por parametros
     public Entrada(int numSerie, int numAsiento, String rutPersona,int idSector, int idEvento){
         this.numSerie = numSerie;
@@ -72,5 +73,18 @@ public class Entrada {
 
     public void setIdSector(int idSector) {
         this.idSector = idSector;
+    }
+    
+    public void mostrarEntrada(String evento){
+        System.out.println("Numero de Serie: "  + numSerie);
+        System.out.println("Evento: " + evento + " - Sector: "+ idSector + " - Asiento: "+ numAsiento);
+        if("0".equals(rutPersona)){
+            System.out.println("DISPONIBLE");
+            
+        }
+        else{
+            System.out.println("NO DISPONIBLE");
+        }
+        
     }
 }
