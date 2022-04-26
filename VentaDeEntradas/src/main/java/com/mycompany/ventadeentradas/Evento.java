@@ -130,7 +130,14 @@ public class Evento {
         
     }
     
-    //buscar Entrada en HashMap
+    
+    //sobrecarga de metodo
+    
+    /**
+     * Buscar Entrada en HashMap por Id de la entrada
+     * @param idEntrada
+     * @return Retona una Entrada
+     */
     public Entrada buscarEntrada(int idEntrada){
         if(mapaEntradas.containsKey(idEntrada)){
             return mapaEntradas.get(idEntrada);
@@ -138,6 +145,21 @@ public class Evento {
         else{
             return null;
         }
+    }
+    
+    
+    /**
+     * Buscar Entrada en ArrayList por rut
+     * @param rutPersona Rut de la persona que se desea buscar
+     * @return Retorna una Entrada 
+     */
+    public Entrada buscarEntrada(String rutPersona){
+        for(int i = 0;i < listaEntradas.size();i++){
+            if(listaEntradas.get(i).getRutPersona().equals(rutPersona)){
+                return listaEntradas.get(i);
+            }
+        }
+        return (null);
     }
     
     

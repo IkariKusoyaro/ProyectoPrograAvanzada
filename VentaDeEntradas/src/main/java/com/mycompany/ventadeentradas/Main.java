@@ -84,6 +84,16 @@ public class Main {
         }
         
         
+        //Modificar Elemento
+        
+        //modificar Evento
+        
+        
+        //Eliminar Elemento
+        
+        
+        
+        
         Menu menu = new Menu();
         
         Scanner sn = new Scanner(System.in);
