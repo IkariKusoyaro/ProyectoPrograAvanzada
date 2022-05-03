@@ -83,18 +83,12 @@ public class Main {
             lineaEventos = archivoEventos.nextLine();
         }
         
-        
-        //Modificar Elemento
-        
-        //modificar Evento
-        
-        
+        Menu menu = new Menu();
+
         //Eliminar Elemento
         
         
         
-        
-        Menu menu = new Menu();
         
         Scanner sn = new Scanner(System.in);
         boolean salir = false;

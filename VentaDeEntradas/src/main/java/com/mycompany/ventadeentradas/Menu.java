@@ -71,4 +71,157 @@ public class Menu {
         }
     }
     
+    public Evento buscarEvento(ArrayList<Evento> listaEventos, String nombreEvento){
+        for(int i = 0; i < listaEventos.size();i++){
+            if(listaEventos.get(i).getNombreEvento().equals(nombreEvento)){
+                return listaEventos.get(i);
+            }
+        }
+        return (null);
+    }
+    
+    
+    public boolean modificarEvento(ArrayList<Evento> listaEventos) throws IOException{
+        BufferedReader usuario = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Ingrese el Nombre del Evento a Modificar");
+        Menu menu = new Menu();
+        Evento aux = menu.buscarEvento(listaEventos, usuario.readLine());
+        if(aux != (null)){
+            Scanner sn = new Scanner(System.in);
+            boolean salir = false;
+            int opcion; //Guardaremos la opcion del usuario
+ 
+            while (!salir) {
+ 
+                System.out.println("1. Modificar Nombre");
+                System.out.println("2. Modificar Fecha");
+                System.out.println("3. Salir");
+ 
+                try {
+ 
+                    System.out.println("Selecciona una opcion");
+                    opcion = sn.nextInt();
+ 
+                    switch (opcion) {
+                        case 1:
+                            System.out.println("Ingrese El Nuevo Nombre Del Evento");
+                            aux.setNombreEvento(usuario.readLine());
+                        case 2:
+                            System.out.println("Ingrese El Nuevo Dia Del Evento");
+                            aux.setDia(Integer.parseInt(usuario.readLine()));
+                            System.out.println("Ingrese El Nuevo Mes Del Evento");
+                            aux.setMes(Integer.parseInt(usuario.readLine()));
+                            System.out.println("Ingrese El Nuevo Anio Del Evento");
+                            aux.setAnio(Integer.parseInt(usuario.readLine()));
+                        case 3:
+                            salir = true;
+                            break;
+                        default:
+                            System.out.println("Solo números entre 1 y 3");
+                    }
+                } catch (InputMismatchException e) {
+                    System.out.println("Debes insertar un número");
+                    sn.next();
+                }
+            }
+            
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean modificarEvento(HashMap<Integer,Evento> mapaEventos) throws IOException{
+        BufferedReader usuario = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Ingrese la Id del Evento a Modificar");
+        Evento aux = mapaEventos.get(Integer.parseInt(usuario.readLine()));
+        if(aux != (null)){
+            Scanner sn = new Scanner(System.in);
+            boolean salir = false;
+            int opcion; //Guardaremos la opcion del usuario
+ 
+            while (!salir) {
+ 
+                System.out.println("1. Modificar Nombre");
+                System.out.println("2. Modificar Fecha");
+                System.out.println("3. Salir");
+ 
+                try {
+ 
+                    System.out.println("Selecciona una opcion");
+                    opcion = sn.nextInt();
+ 
+                    switch (opcion) {
+                        case 1:
+                            System.out.println("Ingrese El Nuevo Nombre Del Evento");
+                            aux.setNombreEvento(usuario.readLine());
+                        case 2:
+                            System.out.println("Ingrese El Nuevo Dia Del Evento");
+                            aux.setDia(Integer.parseInt(usuario.readLine()));
+                            System.out.println("Ingrese El Nuevo Mes Del Evento");
+                            aux.setMes(Integer.parseInt(usuario.readLine()));
+                            System.out.println("Ingrese El Nuevo Anio Del Evento");
+                            aux.setAnio(Integer.parseInt(usuario.readLine()));
+                        case 3:
+                            salir = true;
+                            break;
+                        default:
+                            System.out.println("Solo números entre 1 y 3");
+                    }
+                } catch (InputMismatchException e) {
+                    System.out.println("Debes insertar un número");
+                    sn.next();
+                }
+            }
+            
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean modificarEntrada(ArrayList<Evento> listaEventos) throws IOException{
+        BufferedReader usuario = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Ingrese la Id de la entrada a modificar");
+        int id = Integer.parseInt(usuario.readLine());
+        Entrada aux = null;
+        for(int i = 0;i < listaEventos.size(); i++ ){
+            aux = listaEventos.get(i).buscarEntrada(id);
+            if(aux != null) break;
+        }
+        if(aux != null){
+            System.out.println("Ingrese el Nuevo Rut de la Persona a la que esta Asignada la Entrada");
+            aux.setRutPersona(usuario.readLine());
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean eliminarEvento(ArrayList<Evento> listaEventos, HashMap<Integer,Evento> mapaEventos) throws IOException{
+        BufferedReader usuario = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Ingrese la Id del evento a Eliminar");
+        int id = Integer.parseInt(usuario.readLine());
+        Evento aux = mapaEventos.get(id);
+        if(aux != null){
+            boolean flag = listaEventos.remove(aux);
+            if (flag != true) return false;
+            mapaEventos.remove(id);
+        }
+        return false;
+    }
+    
+    public boolean eliminarEntrada(ArrayList<Evento> listaEventos,HashMap<Integer,Evento> mapaEventos) throws IOException{
+        BufferedReader usuario = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Ingrese la Id de la entrada a eliminar");   //la entrada no se elimina 
+        int id = Integer.parseInt(usuario.readLine());                  //sino que se modifica el rut asociado
+        Entrada aux = null;
+        for(int i = 0;i < listaEventos.size(); i++ ){
+            aux = listaEventos.get(i).buscarEntrada(id);
+            if(aux != null) break;
+        }
+        if(aux != null){
+            aux.setRutPersona("0");
+            return true;
+        }
+        return false;
+    }
+    
 }
