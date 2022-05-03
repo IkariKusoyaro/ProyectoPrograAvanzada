@@ -100,7 +100,12 @@ public class Main {
             System.out.println("2. Agregar Entrada");
             System.out.println("3. Lista de Eventos");
             System.out.println("4. Lista de Entradas");
-            System.out.println("5. Salir");
+            System.out.println("5. Generar Informe");
+            System.out.println("6. Editar Entrada");
+            System.out.println("7. Editar Evento");
+            System.out.println("8. Borrar Entrada");
+            System.out.println("9. Borrar Evento");
+            System.out.println("10. Salir");
  
             try {
  
@@ -125,8 +130,30 @@ public class Main {
                         menu.mostrarEntradas(listaEventos);
                         break;
                     case 5:
+                        //
+                        menu.generarReporte(listaEventos);
+                        break;
+                    case 6:
+                        //
+                        menu.modificarEntrada(listaEventos);
+                        break;
+                    case 7:
+                        //
+                        menu.modificarEvento(listaEventos);
+                        break;
+                    case 8:
+                        //
+                        menu.eliminarEntrada(listaEventos,mapaEventos);
+                        break;
+                    case 9:
+                        //
+                        menu.eliminarEvento(listaEventos,mapaEventos);
+                        break;
+
+                    case 10:
                         salir = true;
                         break;
+                        
                     default:
                         System.out.println("Solo números entre 1 y 3");
                 }

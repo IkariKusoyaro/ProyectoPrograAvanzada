@@ -223,5 +223,12 @@ public class Menu {
         }
         return false;
     }
-    
+    public void generarReporte(ArrayList<Evento> listaEventos) throws IOException {
+        FileWriter fichero = new FileWriter ("C:/Users/rodri/Desktop/reportes/reportes.txt");
+        for (int i=0; i<listaEventos.size(); i++){
+            fichero.write("Evento: " + (listaEventos.get(i)).getNombreEvento() + " - "  + "Año: " + (listaEventos.get(i)).getAnio() + " - " + "Día: " + (listaEventos.get(i)).getDia() + " - " + "Mes: " + (listaEventos.get(i)).getMes() + "\n" ); 
+
+        }
+        fichero.close();
+    }
 }
