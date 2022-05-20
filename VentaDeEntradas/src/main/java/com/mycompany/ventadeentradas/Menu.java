@@ -106,6 +106,7 @@ public class Menu {
                         case 1:
                             System.out.println("Ingrese El Nuevo Nombre Del Evento");
                             aux.setNombreEvento(usuario.readLine());
+                            break;
                         case 2:
                             System.out.println("Ingrese El Nuevo Dia Del Evento");
                             aux.setDia(Integer.parseInt(usuario.readLine()));
@@ -113,6 +114,7 @@ public class Menu {
                             aux.setMes(Integer.parseInt(usuario.readLine()));
                             System.out.println("Ingrese El Nuevo Anio Del Evento");
                             aux.setAnio(Integer.parseInt(usuario.readLine()));
+                            break;
                         case 3:
                             salir = true;
                             break;
@@ -154,6 +156,7 @@ public class Menu {
                         case 1:
                             System.out.println("Ingrese El Nuevo Nombre Del Evento");
                             aux.setNombreEvento(usuario.readLine());
+                            break;
                         case 2:
                             System.out.println("Ingrese El Nuevo Dia Del Evento");
                             aux.setDia(Integer.parseInt(usuario.readLine()));
@@ -161,6 +164,7 @@ public class Menu {
                             aux.setMes(Integer.parseInt(usuario.readLine()));
                             System.out.println("Ingrese El Nuevo Anio Del Evento");
                             aux.setAnio(Integer.parseInt(usuario.readLine()));
+                            break;
                         case 3:
                             salir = true;
                             break;
@@ -204,6 +208,7 @@ public class Menu {
             boolean flag = listaEventos.remove(aux);
             if (flag != true) return false;
             mapaEventos.remove(id);
+            return true;
         }
         return false;
     }
@@ -224,11 +229,23 @@ public class Menu {
         return false;
     }
     public void generarReporte(ArrayList<Evento> listaEventos) throws IOException {
-        FileWriter fichero = new FileWriter ("C:/Users/rodri/Desktop/reportes/reportes.txt");
-        for (int i=0; i<listaEventos.size(); i++){
-            fichero.write("Evento: " + (listaEventos.get(i)).getNombreEvento() + " - "  + "Año: " + (listaEventos.get(i)).getAnio() + " - " + "Día: " + (listaEventos.get(i)).getDia() + " - " + "Mes: " + (listaEventos.get(i)).getMes() + "\n" ); 
-
+        try (FileWriter fichero = new FileWriter ("./reportes.txt")) {
+            for (int i=0; i<listaEventos.size(); i++){
+                fichero.write("Evento: " + (listaEventos.get(i)).getNombreEvento() + " - "  + "Anio: " + (listaEventos.get(i)).getAnio() + " - " + "Dia: " + (listaEventos.get(i)).getDia() + " - " + "Mes: " + (listaEventos.get(i)).getMes() + "\n" );
+                
+            }
         }
-        fichero.close();
     }
+    
+    //buscar las personas que estan de cumpleaños el dia del evento
+    
+    
+    
+    //
+    
+    
+    public void comprarEntrada(){
+        
+    }
+    
 }

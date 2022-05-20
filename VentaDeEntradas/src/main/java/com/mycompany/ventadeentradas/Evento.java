@@ -51,6 +51,13 @@ public class Evento {
     
     
     //constructor con cantidad de entradas fija
+
+    /**
+     *
+     * @param numEntradas numero de entradas del evento
+     * @param numSerieActual
+     * @param idEvento
+     */
     public Evento(int numEntradas, int numSerieActual,int idEvento){
         mapaEntradas = new HashMap();
         listaEntradas = new ArrayList();

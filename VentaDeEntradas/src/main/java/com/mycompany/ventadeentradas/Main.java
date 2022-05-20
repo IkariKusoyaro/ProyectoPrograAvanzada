@@ -23,6 +23,9 @@ public class Main {
         ArrayList<Evento> listaEventos;
         listaEventos = new ArrayList();
         
+        ArrayList<Cliente> listaClientes;
+        
+        
         Evento eventoAux;
         
         
@@ -162,6 +165,8 @@ public class Main {
                 sn.next();
             }
         }
+        
+        
         
         /*ArrayList<Entrada> a = new ArrayList();
         entradaAgregar = new Entrada(1,2,"20",3,4);
