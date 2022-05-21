@@ -46,6 +46,9 @@ abstract class Persona {
         return contrasenia;
     }
     
+    public void mostrarPersona(){
+        System.out.println("");
+    }
     
 
 }

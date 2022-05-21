@@ -17,14 +17,16 @@ public class Evento {
     private int anio;
     private HashMap<Integer,Entrada> mapaEntradas;  //Mapa de entradas por id
     private ArrayList<Entrada> listaEntradas;
+    private int precio;     //precio de la entrada
 
     //Contructor por parametros
-    public Evento(int eventId, String nombreEvento, int dia, int mes, int anio) {
+    public Evento(int eventId, String nombreEvento, int dia, int mes, int anio, int precio) {
         this.eventId = eventId;
         this.nombreEvento = nombreEvento;
         this.dia = dia;
         this.mes = mes;
         this.anio = anio;
+        this.precio = precio;
         mapaEntradas = new HashMap();
         listaEntradas = new ArrayList();
     }
@@ -36,6 +38,7 @@ public class Evento {
         dia = Integer.parseInt(archivo.get_csvField(linea, 2));
         mes = Integer.parseInt(archivo.get_csvField(linea, 3));
         anio = Integer.parseInt(archivo.get_csvField(linea, 4));
+        precio = Integer.parseInt(archivo.get_csvField(linea, 5));
         mapaEntradas = new HashMap();
         listaEntradas = new ArrayList();
     }
@@ -62,7 +65,7 @@ public class Evento {
         mapaEntradas = new HashMap();
         listaEntradas = new ArrayList();
         for(int i = 0; i < numEntradas;i++){
-            Entrada entradaAux = new Entrada(numSerieActual,(i+1),"0",1,idEvento);
+            Entrada entradaAux = new Entrada(numSerieActual,(i+1),"0",idEvento);
             mapaEntradas.put(numSerieActual, entradaAux);
             listaEntradas.add(entradaAux);
             numSerieActual++;
@@ -108,6 +111,16 @@ public class Evento {
     public void setNombreEvento(String nombreEvento) {
         this.nombreEvento = nombreEvento;
     }
+
+    public int getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(int precio) {
+        this.precio = precio;
+    }
+    
+    
     
     //metodos
     public void addEntrada(Entrada aAgregar){
@@ -131,7 +144,7 @@ public class Evento {
     
     //mostrar Evento
     public void mostrarEvento(){
-        System.out.println("ID Evento: "+ eventId);
+        System.out.println("ID Evento: "+ eventId + " Precio Evento: " + precio);
         System.out.println("Nombre Evento: "+ nombreEvento);
         System.out.println("Fecha Evento: "+ dia + "/" + mes + "/" + anio);
         
@@ -170,7 +183,25 @@ public class Evento {
     }
     
     
+    public Entrada buscarEntradaVacia(){
+        String rutAux = "0";
+        for(int i = 0; i < listaEntradas.size();i++){
+            if(listaEntradas.get(i).getRutPersona().equals(rutAux))return listaEntradas.get(i);
+        }
+        return null;
+    }
     
+    
+    public ArrayList<Entrada> entradasNoNulas(){
+        ArrayList<Entrada> noNulas = new ArrayList();
+        for(int i = 0; i < listaEntradas.size();i++){
+            if(!(listaEntradas.get(i).getRutPersona().equals("0"))){
+                noNulas.add(listaEntradas.get(i));
+            }
+        }
+        if(!noNulas.isEmpty()) return noNulas;
+        return null;
+    }
     
     //Mostrar Todas las Entradas de un evento especifico
     //codigo

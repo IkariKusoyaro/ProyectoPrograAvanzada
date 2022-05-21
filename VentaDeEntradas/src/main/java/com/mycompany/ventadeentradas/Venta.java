@@ -10,6 +10,19 @@ package com.mycompany.ventadeentradas;
  * @author TioPanxo
  */
 public interface Venta {
-    
-    public int generarDescuento(int precio, float descuento);
+
+    /**
+     *
+     * @param dia
+     * @param mes
+     * @return
+     */
+    public boolean verificarDescuento(int dia, int mes);
+
+    /**
+     *
+     * @param precio
+     * @return
+     */
+    public int generarDescuento(int precio);
 }

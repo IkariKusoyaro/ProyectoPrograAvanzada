@@ -1,4 +1,4 @@
-"Id Evento","Nombre Evento","Dia","Mes","Año"
-1,Lollapalooza Dia 1,26,3,2022
-2,Lollapalooza Dia 2,27,3,2022
-3,Festival Cantores,5,4,2022
+"Id Evento","Nombre Evento","Dia","Mes","Año","precio"
+1,Lollapalooza Dia 1,26,3,2022,10000
+2,Lollapalooza Dia 2,27,3,2022,35000
+3,Festival Cantores,5,4,2022,100000

@@ -5,8 +5,6 @@
  */
 package com.mycompany.ventadeentradas;
 
-import java.util.*;
-
 /**
  *
  * @author TioPanxo
@@ -15,24 +13,82 @@ public class Cliente extends Persona implements Venta {
     private int dia;
     private int mes;
     private int anio;
-    private ArrayList<String> listaMusical;     //lista con los generos musicales favoritos de la persona
     private int presupuesto;
 
-    public Cliente(String rut, String nombre, String contrasenia, int dia, int mes, int anio , ArrayList listaMusical, int presupuesto) {
+    public Cliente(String rut, String nombre, String contrasenia, int dia, int mes, int anio , int presupuesto) {
         super(rut, nombre, contrasenia);
         this.dia = dia;
         this.mes = mes;
         this.anio = anio;
         this.presupuesto = presupuesto;
-        listaMusical = new ArrayList<String>();
     }
+
+    /**
+     *
+     * @param lineaPersona
+     * @param archivoPersonas
+     */
+    public Cliente(String lineaPersona, CSV archivoPersonas) {
+        super(archivoPersonas.get_csvField(lineaPersona,1),archivoPersonas.get_csvField(lineaPersona,2),archivoPersonas.get_csvField(lineaPersona,6));
+        dia = Integer.parseInt(archivoPersonas.get_csvField(lineaPersona,3));
+        mes = Integer.parseInt(archivoPersonas.get_csvField(lineaPersona,4));
+        anio = Integer.parseInt(archivoPersonas.get_csvField(lineaPersona,5));
+        presupuesto = Integer.parseInt(archivoPersonas.get_csvField(lineaPersona,7));
+    }
+
+    public int getDia() {
+        return dia;
+    }
+
+    public void setDia(int dia) {
+        this.dia = dia;
+    }
+
+    public int getMes() {
+        return mes;
+    }
+
+    public void setMes(int mes) {
+        this.mes = mes;
+    }
+
+    public int getAnio() {
+        return anio;
+    }
+
+    public void setAnio(int anio) {
+        this.anio = anio;
+    }
+
+    public int getPresupuesto() {
+        return presupuesto;
+    }
+
+    public void setPresupuesto(int presupuesto) {
+        this.presupuesto = presupuesto;
+    }
+    
     
 
     @Override
-    public int generarDescuento(int precio, float descuento) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int generarDescuento(int precio) {
+        int descuento = 0;
+        if(this.dia == dia && this.mes == mes){
+            descuento = (precio*15)/100;
+        }
+        return descuento;
     }
-    
-    
+
+    @Override
+    public boolean verificarDescuento(int dia, int mes) {
+        return (this.dia == dia && this.mes == mes);
+    }
+
+    @Override
+    public void mostrarPersona() {
+        System.out.println("Nombre: " + getNombre() + " - Rut: "+ getRut());
+        System.out.println("Fecha de Naciemento: "+ dia + "/" + mes + "/" + anio);
+        System.out.println("Prespuesto: " + presupuesto);
+    }
     
 }

@@ -23,8 +23,11 @@ public class Main {
         ArrayList<Evento> listaEventos;
         listaEventos = new ArrayList();
         
-        ArrayList<Cliente> listaClientes;
+        HashMap<String,Cliente> mapaClientes;
+        mapaClientes = new HashMap();
         
+        HashMap<String,Administrador> mapaAdmin;
+        mapaAdmin = new HashMap();
         
         Evento eventoAux;
         
@@ -76,6 +79,7 @@ public class Main {
                 eventoAux.setDia(Integer.parseInt(archivoEventos.get_csvField(lineaEventos, 2)));
                 eventoAux.setMes(Integer.parseInt(archivoEventos.get_csvField(lineaEventos, 3)));
                 eventoAux.setAnio(Integer.parseInt(archivoEventos.get_csvField(lineaEventos, 4)));
+                eventoAux.setPrecio(Integer.parseInt(archivoEventos.get_csvField(lineaEventos, 5)));
             }
             else{
                 eventoAux = new Evento(archivoEntradas,lineaEventos);
@@ -88,9 +92,26 @@ public class Main {
         
         Menu menu = new Menu();
 
-        //Eliminar Elemento
+        //importar personas
+        Cliente clienteAgregar;
+        Administrador adminAgregar;
+        CSV archivoPersonas = new CSV("Personas");
+        
+        //linea personas
+        String lineaPersona = archivoPersonas.firstLine();
+        lineaPersona = archivoPersonas.nextLine();  //Primera linea basura
         
         
+        for(;lineaPersona != (null);){
+            if(archivoPersonas.get_csvField(lineaPersona, 0).equals("1")){
+                clienteAgregar = new Cliente(lineaPersona,archivoPersonas);
+                mapaClientes.put(archivoPersonas.get_csvField(lineaPersona,1), clienteAgregar);
+            }
+            else{
+                adminAgregar = new Administrador(lineaPersona,archivoPersonas);
+                mapaAdmin.put(archivoPersonas.get_csvField(lineaPersona, 1), adminAgregar);
+            }
+        }
         
         
         Scanner sn = new Scanner(System.in);
@@ -108,7 +129,9 @@ public class Main {
             System.out.println("7. Editar Evento");
             System.out.println("8. Borrar Entrada");
             System.out.println("9. Borrar Evento");
-            System.out.println("10. Salir");
+            System.out.println("10. Vender Entrada");
+            System.out.println("11. Mostrar clientes con Decuentos");
+            System.out.println("12. Salir");
  
             try {
  
@@ -152,13 +175,19 @@ public class Main {
                         //
                         menu.eliminarEvento(listaEventos,mapaEventos);
                         break;
-
                     case 10:
+                        Cliente aux = new Cliente("12345678-9","Jesucristo de Nazaret","Diosito12",25,12,0,100000);
+                        menu.comprarEntrada(listaEventos, aux);
+                        break;
+                    case 11:
+                        menu.PersonasBeneficiadas(listaEventos, mapaClientes);
+                        break;
+                    case 12:
                         salir = true;
                         break;
                         
                     default:
-                        System.out.println("Solo números entre 1 y 3");
+                        System.out.println("Solo números entre 1 y 12");
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Debes insertar un número");
