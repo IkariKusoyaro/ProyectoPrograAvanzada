@@ -18,10 +18,10 @@ public class Menu {
     }
     
     /**
-     *
-     * @param listaEventos
-     * @param mapaEventos
-     * @throws IOException
+     * agrega una entrada al evento
+     * @param listaEventos lista que almacena los eventos 
+     * @param mapaEventos mapa que almacena los eventos con clave id del evento
+     * @throws IOException Error de I/O
      */
     public void agregarEntrada(ArrayList<Evento> listaEventos,HashMap<Integer,Evento> mapaEventos) throws IOException{
         System.out.println("Ingrese la ID del evento al que pertenece la Entrada a Agregar (Solo Entradas Numericas)");
@@ -43,11 +43,11 @@ public class Menu {
     }
     
     /**
-     *
-     * @param numSerieActual
-     * @param listaEventos
-     * @param mapaEventos
-     * @throws IOException
+     * agrega un evento
+     * @param numSerieActual Numero de serie actual del evento
+     * @param listaEventos lista que almacena los eventos 
+     * @param mapaEventos mapa que almacena los eventos con clave id del evento
+     * @throws IOException Error de I/O
      */
     public void agregarEvento(int numSerieActual,ArrayList<Evento> listaEventos,HashMap<Integer,Evento> mapaEventos) throws IOException{
         BufferedReader usuario = new BufferedReader(new InputStreamReader(System.in));
@@ -73,8 +73,8 @@ public class Menu {
     }
     
     /**
-     *
-     * @param listaEventos
+     * muestra las entradas del evento
+     * @param listaEventos lista que almacena los eventos 
      */
     public void mostrarEntradas(ArrayList<Evento> listaEventos){
         for(int i = 0; i < listaEventos.size();i++){
@@ -83,8 +83,8 @@ public class Menu {
     }
     
     /**
-     *
-     * @param listaEventos
+     * muestra por pantalla la lista de eventos
+     * @param listaEventos lista que almacena los eventos 
      */
     public void mostrarEventos(ArrayList<Evento> listaEventos){
         for(int i = 0;i < listaEventos.size();i++){
@@ -95,10 +95,10 @@ public class Menu {
     }
     
     /**
-     *
-     * @param listaEventos
-     * @param nombreEvento
-     * @return
+     * busca un evento por su nombre
+     * @param listaEventos lista que almacena los eventos 
+     * @param nombreEvento Nombre del evento 
+     * @return retorna la lista de eventos o null cuando no encuentra el evento
      */
     public Evento buscarEvento(ArrayList<Evento> listaEventos, String nombreEvento){
         for(int i = 0; i < listaEventos.size();i++){
@@ -110,10 +110,10 @@ public class Menu {
     }
     
     /**
-     *
-     * @param listaEventos
-     * @return
-     * @throws IOException
+     * modifica un evento ya existente de la lista
+     * @param listaEventos lista que almacena los eventos 
+     * @return retorna true si fue modificado o false si no fue modificado
+     * @throws IOException Error de I/O
      */
     public boolean modificarEvento(ArrayList<Evento> listaEventos) throws IOException{
         BufferedReader usuario = new BufferedReader(new InputStreamReader(System.in));
@@ -167,10 +167,10 @@ public class Menu {
     }
     
     /**
-     *
-     * @param mapaEventos
-     * @return
-     * @throws IOException
+     * modifica un evento ya existente en el hashmap
+     * @param mapaEventos mapa que almacena los eventos con clave id del evento
+     * @return retorna true si fue modificado o false si no fue modificado
+     * @throws IOException Error de I/O
      */
     public boolean modificarEvento(HashMap<Integer,Evento> mapaEventos) throws IOException{
         BufferedReader usuario = new BufferedReader(new InputStreamReader(System.in));
@@ -223,10 +223,10 @@ public class Menu {
     }
     
     /**
-     *
-     * @param listaEventos
-     * @return
-     * @throws IOException
+     * modifica una entrada
+     * @param listaEventos lista que almacena los eventos 
+     * @return retorna la entrada modificada
+     * @throws IOException Error de I/O
      */
     public boolean modificarEntrada(ArrayList<Evento> listaEventos) throws IOException{
         BufferedReader usuario = new BufferedReader(new InputStreamReader(System.in));
@@ -246,11 +246,11 @@ public class Menu {
     }
     
     /**
-     *
-     * @param listaEventos
-     * @param mapaEventos
-     * @return
-     * @throws IOException
+     * elimina un evento
+     * @param listaEventos lista que almacena los eventos 
+     * @param mapaEventos mapa que almacena los eventos con clave id del evento
+     * @return si se elimino el evento retorna true , y si no se elimino el evento retorna false
+     * @throws IOException Error de I/O
      */
     public boolean eliminarEvento(ArrayList<Evento> listaEventos, HashMap<Integer,Evento> mapaEventos) throws IOException{
         BufferedReader usuario = new BufferedReader(new InputStreamReader(System.in));
@@ -267,11 +267,11 @@ public class Menu {
     }
     
     /**
-     *
-     * @param listaEventos
-     * @param mapaEventos
-     * @return
-     * @throws IOException
+     * elimina una entrada de un evento
+     * @param listaEventos lista que almacena los eventos 
+     * @param mapaEventos mapa que almacena los eventos con clave id del evento
+     * @returnsi se elimino la entrada retorna true , y si no se elimino el evento retorna false
+     * @throws IOException Error de I/O
      */
     public boolean eliminarEntrada(ArrayList<Evento> listaEventos,HashMap<Integer,Evento> mapaEventos) throws IOException{
         BufferedReader usuario = new BufferedReader(new InputStreamReader(System.in));
@@ -290,9 +290,9 @@ public class Menu {
     }
 
     /**
-     *
-     * @param listaEventos
-     * @throws IOException
+     * genera un reporte en formato .txt
+     * @param listaEventos lista que almacena los eventos 
+     * @throws IOException Error de I/O
      */
     public void generarReporte(ArrayList<Evento> listaEventos) throws IOException {
         try (FileWriter fichero = new FileWriter ("./reportes.txt")) {
@@ -348,10 +348,10 @@ public class Menu {
     
 
     /**
-     * 
-     * @param listaEventos
-     * @param user
-     * @throws IOException
+     * opcion para comprar una entrada para un evento
+     * @param listaEventos lista que almacena los eventos 
+     * @param user El usuario de el cliente quiere comprar una entrada
+     * @throws IOException Error de I/O
      */
     public void comprarEntrada(ArrayList<Evento> listaEventos, Cliente user) throws IOException{
         int precioFinal = 0;

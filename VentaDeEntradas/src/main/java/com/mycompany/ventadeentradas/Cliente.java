@@ -24,9 +24,9 @@ public class Cliente extends Persona implements Venta {
     }
 
     /**
-     *
-     * @param lineaPersona
-     * @param archivoPersonas
+     * añade un cliente al CSV
+     * @param lineaPersona Es la primera linea del archivo de personas
+     * @param archivoPersonas CSV base de datos CSV
      */
     public Cliente(String lineaPersona, CSV archivoPersonas) {
         super(archivoPersonas.get_csvField(lineaPersona,1),archivoPersonas.get_csvField(lineaPersona,2),archivoPersonas.get_csvField(lineaPersona,6));

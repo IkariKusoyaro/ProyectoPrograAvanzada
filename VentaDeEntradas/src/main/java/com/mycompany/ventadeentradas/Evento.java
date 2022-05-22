@@ -56,10 +56,10 @@ public class Evento {
     //constructor con cantidad de entradas fija
 
     /**
-     *
+     * crea un evento y le asigna sus datos
      * @param numEntradas numero de entradas del evento
-     * @param numSerieActual
-     * @param idEvento
+     * @param numSerieActual Numero de serie del evento
+     * @param idEvento Numero de indentificacion del evento
      */
     public Evento(int numEntradas, int numSerieActual,int idEvento){
         mapaEntradas = new HashMap();
@@ -155,7 +155,7 @@ public class Evento {
     
     /**
      * Buscar Entrada en HashMap por Id de la entrada
-     * @param idEntrada
+     * @param idEntrada Numero de identificacion de una entrada
      * @return Retona una Entrada
      */
     public Entrada buscarEntrada(int idEntrada){
