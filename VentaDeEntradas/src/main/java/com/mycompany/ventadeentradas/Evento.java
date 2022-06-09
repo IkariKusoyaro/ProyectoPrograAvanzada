@@ -123,6 +123,12 @@ public class Evento {
     
     
     //metodos
+
+     /**
+     * Añade una entrada al mapa de entradas
+     * @param Entradas a agregar
+     * @return 
+     */
     public void addEntrada(Entrada aAgregar){
         mapaEntradas.put(aAgregar.getNumSerie(), aAgregar);
         listaEntradas.add(aAgregar);
@@ -132,6 +138,10 @@ public class Evento {
     
     
     //Mostrar Todas Las Entradas del evento
+     /**
+     * Muestra todas las entradas del evento
+     * @param idEntrada Numero de identificacion de una entrada
+     */
     public void mostrarEntradas(){   
         System.out.println("");
         System.out.println("EVENTO " + nombreEvento);
@@ -141,8 +151,9 @@ public class Evento {
             
         }
     }
-    
+
     //mostrar Evento
+
     public void mostrarEvento(){
         System.out.println("ID Evento: "+ eventId + " Precio Evento: " + precio);
         System.out.println("Nombre Evento: "+ nombreEvento);
@@ -182,7 +193,11 @@ public class Evento {
         return (null);
     }
     
-    
+    /**
+     * Buscar Entradas sin dueño
+     * @param la lista de entradas listaEntradas
+     * @return Retorna las entradas vacias
+     */
     public Entrada buscarEntradaVacia(){
         String rutAux = "0";
         for(int i = 0; i < listaEntradas.size();i++){
@@ -191,9 +206,13 @@ public class Evento {
         return null;
     }
     
-    
+    /**
+     * Busca las entradas validas
+     * @param arraylist de entradas
+     * @return retorna retorna una entrada no nula, si no existe retorna null
+     */
     public ArrayList<Entrada> entradasNoNulas(){
-        ArrayList<Entrada> noNulas = new ArrayList();
+        ArrayList<Entrada> noNulas = new ArrayList(); 
         for(int i = 0; i < listaEntradas.size();i++){
             if(!(listaEntradas.get(i).getRutPersona().equals("0"))){
                 noNulas.add(listaEntradas.get(i));
