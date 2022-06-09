@@ -11,18 +11,8 @@ package com.mycompany.ventadeentradas;
  */
 public interface Venta {
 
-    /**
-     *
-     * @param dia
-     * @param mes
-     * @return
-     */
+
     public boolean verificarDescuento(int dia, int mes);
 
-    /**
-     *
-     * @param precio
-     * @return
-     */
     public int generarDescuento(int precio);
 }

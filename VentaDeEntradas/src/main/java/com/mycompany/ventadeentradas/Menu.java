@@ -270,7 +270,7 @@ public class Menu {
      * elimina una entrada de un evento
      * @param listaEventos lista que almacena los eventos 
      * @param mapaEventos mapa que almacena los eventos con clave id del evento
-     * @returnsi se elimino la entrada retorna true , y si no se elimino el evento retorna false
+     * @return si se elimino la entrada retorna true , y si no se elimino el evento retorna false
      * @throws IOException Error de I/O
      */
     public boolean eliminarEntrada(ArrayList<Evento> listaEventos,HashMap<Integer,Evento> mapaEventos) throws IOException{
@@ -304,6 +304,14 @@ public class Menu {
     }
     
     //buscar las personas que estan de cumpleaños el dia del evento y muestra una lista con ellas
+
+    /**
+     * metodo para buscar las personas que estan de cumpleaños el dia del evento
+     * @param listaEventos lista con todos los eventos 
+     * @param mapaClientes mapa con todos los clientes 
+     * @throws IOException
+     */
+    
     public void PersonasBeneficiadas(ArrayList<Evento> listaEventos, HashMap<String,Cliente> mapaClientes) throws IOException{
         BufferedReader usuario = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Ingrese el evento del cual desea buscar Beneficiarios");
@@ -340,7 +348,7 @@ public class Menu {
                 clienteAux.mostrarPersona();
             }
         }
-        if(contador == 0)System.out.println("No hay personas beneficiadas");;
+        if(contador == 0)System.out.println("No hay personas beneficiadas");
         
     }
     
@@ -371,7 +379,6 @@ public class Menu {
             System.out.println("No existe el evento");
             return;
         }
-        
         //Revisa que tenga entradas vacias
         if(aux.buscarEntradaVacia() == (null))return;
         

@@ -9,7 +9,7 @@ package com.mycompany.ventadeentradas;
  *
  * @author TioPanxo
  */
-public class Administrador extends Persona{
+public class Administrador extends Persona implements Venta{
     
     int dia;
     int mes;
@@ -59,6 +59,20 @@ public class Administrador extends Persona{
     public void mostrarPersona() {
         System.out.println("Nombre: " + getNombre() + " - Rut: "+ getRut());
         System.out.println("Fecha de Naciemento: "+ dia + "/" + mes + "/" + anio);
+    }
+
+    @Override
+    public boolean verificarDescuento(int dia, int mes) {
+        return (this.dia == dia && this.mes == mes);
+    }
+
+    @Override
+    public int generarDescuento(int precio) {
+        int descuento = 0;
+        if(this.dia == dia && this.mes == mes){
+            descuento = (precio*50)/100;
+        }
+        return descuento;
     }
     
     

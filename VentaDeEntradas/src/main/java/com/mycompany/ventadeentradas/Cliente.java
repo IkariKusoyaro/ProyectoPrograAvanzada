@@ -68,8 +68,11 @@ public class Cliente extends Persona implements Venta {
         this.presupuesto = presupuesto;
     }
     
-    
-
+    /**
+     * metodo para calcular el descuento de la entrada 
+     * @param precio valor inicial de la entrada
+     * @return retorna el valor final de la ehtrada
+     */
     @Override
     public int generarDescuento(int precio) {
         int descuento = 0;
@@ -79,11 +82,20 @@ public class Cliente extends Persona implements Venta {
         return descuento;
     }
 
+    /**
+     * medoto para verificar si el cliente puede recibir el descuento
+     * @param dia fecha del evento
+     * @param mes fecha del evento
+     * @return  true si el cliente puede recibir el descuento
+     */
     @Override
     public boolean verificarDescuento(int dia, int mes) {
         return (this.dia == dia && this.mes == mes);
     }
 
+    /**
+     *  Metodo que muestra los datos de la persona
+     */
     @Override
     public void mostrarPersona() {
         System.out.println("Nombre: " + getNombre() + " - Rut: "+ getRut());

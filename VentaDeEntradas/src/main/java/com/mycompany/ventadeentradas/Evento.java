@@ -126,8 +126,7 @@ public class Evento {
 
      /**
      * Añade una entrada al mapa de entradas
-     * @param Entradas a agregar
-     * @return 
+     * @param aAgregar entrada que se desea agregar al evento 
      */
     public void addEntrada(Entrada aAgregar){
         mapaEntradas.put(aAgregar.getNumSerie(), aAgregar);
@@ -140,7 +139,6 @@ public class Evento {
     //Mostrar Todas Las Entradas del evento
      /**
      * Muestra todas las entradas del evento
-     * @param idEntrada Numero de identificacion de una entrada
      */
     public void mostrarEntradas(){   
         System.out.println("");
@@ -152,8 +150,9 @@ public class Evento {
         }
     }
 
-    //mostrar Evento
-
+    /**
+     * Muestra los parametros del evento
+     */
     public void mostrarEvento(){
         System.out.println("ID Evento: "+ eventId + " Precio Evento: " + precio);
         System.out.println("Nombre Evento: "+ nombreEvento);
@@ -195,8 +194,7 @@ public class Evento {
     
     /**
      * Buscar Entradas sin dueño
-     * @param la lista de entradas listaEntradas
-     * @return Retorna las entradas vacias
+     * @return Retorna la primera entrada vacia que encuentre, de no encontrar una ratornara null
      */
     public Entrada buscarEntradaVacia(){
         String rutAux = "0";
@@ -208,8 +206,7 @@ public class Evento {
     
     /**
      * Busca las entradas validas
-     * @param arraylist de entradas
-     * @return retorna retorna una entrada no nula, si no existe retorna null
+     * @return retorna todas las entradas no vacias, de no encontrar una retorna null
      */
     public ArrayList<Entrada> entradasNoNulas(){
         ArrayList<Entrada> noNulas = new ArrayList(); 

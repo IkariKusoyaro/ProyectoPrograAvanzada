@@ -68,7 +68,7 @@ public class Entrada {
     //metodos
      /**
      * Mostrar por pantalla las entradas
-     * @param un string de evento
+     * @param evento String que contiene el nombre del evento al que pertenecen la entrada
      */
     public void mostrarEntrada(String evento){
         System.out.println("Numero de Serie: "  + numSerie);

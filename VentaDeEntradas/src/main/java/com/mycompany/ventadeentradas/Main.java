@@ -16,102 +16,13 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException, IOException {
         
         int numSerieActual = 1;
-        
-        HashMap<Integer,Evento> mapaEventos;
-        mapaEventos = new HashMap();
-        
-        ArrayList<Evento> listaEventos;
-        listaEventos = new ArrayList();
-        
-        HashMap<String,Cliente> mapaClientes;
-        mapaClientes = new HashMap();
-        
-        HashMap<String,Administrador> mapaAdmin;
-        mapaAdmin = new HashMap();
-        
-        Evento eventoAux;
-        
-        
-        //mapa de entradas a agregar al evento
-        //HashMap<Integer,Entrada> mapaEntradas;
-        
-        
-        
-        //importar entradas
-        Entrada entradaAgregar;
-        CSV archivoEntradas = new CSV("Entradas");
-        CSV archivoEventos = new CSV("Eventos");
-        
-        //linea Entradas
-        String linea = archivoEntradas.firstLine();
-        linea = archivoEntradas.nextLine();     //Primera Linea Basura
-        
-        //linea Eventos
-        String lineaEventos = archivoEventos.firstLine();
-        lineaEventos = archivoEventos.nextLine();       //Primera Linea Basura
-        
-        
-        for(;linea != (null);){
-            entradaAgregar = new Entrada(archivoEntradas,linea);
-            
-            if(mapaEventos.containsKey(entradaAgregar.getIdEvento())){
-                eventoAux = mapaEventos.get(entradaAgregar.getIdEvento());
-                eventoAux.addEntrada(entradaAgregar);
-            }
-            else{
-                eventoAux = new Evento();
-                eventoAux.addEntrada(entradaAgregar);
-                mapaEventos.put(entradaAgregar.getIdEvento(), eventoAux);
-                listaEventos.add(eventoAux);
-            }
-            //mapaEntradas.put(entradaAgregar.getNumSerie(), entradaAgregar);
-            
-            
-            numSerieActual++;
-            linea = archivoEntradas.nextLine();
-        }
-        
-        for(;lineaEventos != (null);){
-            if(mapaEventos.containsKey(Integer.parseInt(archivoEventos.get_csvField(lineaEventos, 0)))){
-                eventoAux = mapaEventos.get(Integer.parseInt(archivoEventos.get_csvField(lineaEventos, 0)));
-                eventoAux.setEventId(Integer.parseInt(archivoEventos.get_csvField(lineaEventos, 0)));
-                eventoAux.setNombreEvento(archivoEventos.get_csvField(lineaEventos, 1));
-                eventoAux.setDia(Integer.parseInt(archivoEventos.get_csvField(lineaEventos, 2)));
-                eventoAux.setMes(Integer.parseInt(archivoEventos.get_csvField(lineaEventos, 3)));
-                eventoAux.setAnio(Integer.parseInt(archivoEventos.get_csvField(lineaEventos, 4)));
-                eventoAux.setPrecio(Integer.parseInt(archivoEventos.get_csvField(lineaEventos, 5)));
-            }
-            else{
-                eventoAux = new Evento(archivoEntradas,lineaEventos);
-                mapaEventos.put(eventoAux.getEventId(), eventoAux);
-                listaEventos.add(eventoAux);
-            }
-            
-            lineaEventos = archivoEventos.nextLine();
-        }
-        
-        Menu menu = new Menu();
+       
+        ControladorListas listas = new ControladorListas();
 
-        //importar personas
-        Cliente clienteAgregar;
-        Administrador adminAgregar;
-        CSV archivoPersonas = new CSV("Personas");
+        numSerieActual = listas.agregarEventosCSV(numSerieActual); 
         
-        //linea personas
-        String lineaPersona = archivoPersonas.firstLine();
-        lineaPersona = archivoPersonas.nextLine();  //Primera linea basura
+        listas.importarPersonasCSV();
         
-        
-        for(;lineaPersona != (null);){
-            if(archivoPersonas.get_csvField(lineaPersona, 0).equals("1")){
-                clienteAgregar = new Cliente(lineaPersona,archivoPersonas);
-                mapaClientes.put(archivoPersonas.get_csvField(lineaPersona,1), clienteAgregar);
-            }
-            else{
-                adminAgregar = new Administrador(lineaPersona,archivoPersonas);
-                mapaAdmin.put(archivoPersonas.get_csvField(lineaPersona, 1), adminAgregar);
-            }
-        }
         
         
         Scanner sn = new Scanner(System.in);
@@ -141,46 +52,46 @@ public class Main {
                 switch (opcion) {
                     case 1:
                         //Agregar Evento
-                        menu.agregarEvento(numSerieActual, listaEventos, mapaEventos);
+                        listas.agregarEvento(numSerieActual);
                         break;
                     case 2:
                         //Agregar Entrada (De las disponibles)
-                        menu.agregarEntrada(listaEventos, mapaEventos);
+                        listas.agregarEntrada();
                         break;
                     case 3:
                         //Mostrar Eventos 
-                        menu.mostrarEventos(listaEventos);
+                        listas.mostrarEventos();
                         break;
                     case 4:
                         //MostrarEntradas de todos los eventos
-                        menu.mostrarEntradas(listaEventos);
+                        listas.mostrarEntradas();
                         break;
                     case 5:
                         //
-                        menu.generarReporte(listaEventos);
+                        listas.generarReporte();
                         break;
                     case 6:
                         //
-                        menu.modificarEntrada(listaEventos);
+                        listas.modificarEntrada();
                         break;
                     case 7:
                         //
-                        menu.modificarEvento(listaEventos);
+                        listas.modificarEvento();
                         break;
                     case 8:
                         //
-                        menu.eliminarEntrada(listaEventos,mapaEventos);
+                        listas.eliminarEntrada();
                         break;
                     case 9:
                         //
-                        menu.eliminarEvento(listaEventos,mapaEventos);
+                        listas.eliminarEvento();
                         break;
                     case 10:
                         Cliente aux = new Cliente("12345678-9","Jesucristo de Nazaret","Diosito12",25,12,0,100000);
-                        menu.comprarEntrada(listaEventos, aux);
+                        listas.comprarEntrada(aux);
                         break;
                     case 11:
-                        menu.PersonasBeneficiadas(listaEventos, mapaClientes);
+                        listas.PersonasBeneficiadas();
                         break;
                     case 12:
                         salir = true;
@@ -202,8 +113,5 @@ public class Main {
         a.add(entradaAgregar);
         if(a.contains(entradaAgregar))System.out.println("a");
         */
-        
-        
-        
     }
 }
