@@ -87,6 +87,8 @@ public class ControladorListas {
             lineaEventos = archivoEventos.nextLine();
         }
         
+        archivoEventos.close();
+        archivoEntradas.close();
         return numSerieActual;
     }
     
@@ -113,8 +115,10 @@ public class ControladorListas {
             }
             lineaPersona = archivoPersonas.nextLine();
         }
-    
+        archivoPersonas.close();
     }
+    
+    
     
     
     public void agregarEvento(int numSerieActual) throws IOException{

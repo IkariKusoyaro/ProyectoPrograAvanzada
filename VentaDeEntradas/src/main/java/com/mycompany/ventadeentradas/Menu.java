@@ -291,15 +291,21 @@ public class Menu {
 
     /**
      * genera un reporte en formato .txt
-     * @param listaEventos lista que almacena los eventos 
+     * @param listaEventos lista que almacena los eventos
      * @throws IOException Error de I/O
      */
     public void generarReporte(ArrayList<Evento> listaEventos) throws IOException {
-        try (FileWriter fichero = new FileWriter ("./reportes.txt")) {
+        try (FileWriter fichero = new FileWriter ("./reporte.txt")) {
             for (int i=0; i<listaEventos.size(); i++){
-                fichero.write("Evento: " + (listaEventos.get(i)).getNombreEvento() + " - "  + "Anio: " + (listaEventos.get(i)).getAnio() + " - " + "Dia: " + (listaEventos.get(i)).getDia() + " - " + "Mes: " + (listaEventos.get(i)).getMes() + "\n" );
-                
+                fichero.write("Id Evento - Nombre Evento - Dia - Mes - Año - Precio\n");
+                fichero.write(((listaEventos.get(i)).getEventId()) + " - " + (listaEventos.get(i)).getNombreEvento() + " - " + (listaEventos.get(i)).getDia() + " - " + (listaEventos.get(i)).getMes() + " - " + (listaEventos.get(i)).getAnio() + " - " + (listaEventos.get(i)).getPrecio() +"\n" );
+                fichero.write("\nId Entrada - Numero Asiento - Rut Persona - Evento\n");
+                fichero.write((listaEventos.get(i)).generarReporteEntradas());
+                fichero.write("\n");
+                fichero.write("\n");
             }
+            
+            fichero.close();
         }
     }
     

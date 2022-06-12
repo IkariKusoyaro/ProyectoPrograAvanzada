@@ -221,4 +221,15 @@ public class Evento {
     
     //Mostrar Todas las Entradas de un evento especifico
     //codigo
+    //"Id Entrada","Numero Asiento","Rut Persona","Evento"
+    public String generarReporteEntradas(){
+        String entradas = "";
+        for(int i = 0; i < listaEntradas.size();i++){
+            entradas = entradas + (listaEntradas.get(i)).getNumSerie() + " - " + (listaEntradas.get(i)).getNumAsiento() + " - " + (listaEntradas.get(i)).getRutPersona() + " - " +(listaEntradas.get(i)).getIdEvento() + "\n";
+        }
+        if(entradas.equals("")){
+            return null;
+        }
+        return entradas;
+    }
 }
