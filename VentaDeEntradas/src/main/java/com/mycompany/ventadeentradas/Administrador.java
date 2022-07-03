@@ -11,9 +11,9 @@ package com.mycompany.ventadeentradas;
  */
 public class Administrador extends Persona implements Venta{
     
-    int dia;
-    int mes;
-    int anio;
+    private int dia;
+    private int mes;
+    private int anio;
     
     public Administrador(String rut, String nombre, String contrasenia, int dia, int mes, int anio) {
         super(rut, nombre, contrasenia);

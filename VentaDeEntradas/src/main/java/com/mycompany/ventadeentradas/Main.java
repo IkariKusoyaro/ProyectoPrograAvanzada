@@ -13,11 +13,11 @@ import java.util.*;
  * @author Camilo
  */
 public class Main {
-    public static void main(String[] args) throws FileNotFoundException, IOException {
+    public static void main(String[] args) throws FileNotFoundException, IOException, InvalidDataTypeException, DatoExisteException {
         
         int numSerieActual = 1;
        
-        ControladorListas listas = new ControladorListas();
+        ControladorColecciones listas = new ControladorColecciones();
 
         numSerieActual = listas.agregarEventosCSV(numSerieActual); 
         
