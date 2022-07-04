@@ -7,6 +7,8 @@ package com.mycompany.ventadeentradas;
 
 import java.io.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -595,8 +597,38 @@ public class ControladorColecciones {
     }
     
     //metodo para seleccionar objeto por criterio
-    
-    
+    //seleccionar la ultima entrada ingresada de un evento determinado mostrando el evento al que pertenece y la persona que la compro
+
+    /**
+     * Metodo que Selecciona la ultima entradada de un Evento determinado y la muestra por pantalla junto con sus datos
+     */
+    public void SeleccionarUltimaEntrada(){
+        BufferedReader usuario = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Ingrese La ID del Evento del cual desea mostrar la ultima entrada Vendida");
+        String idEvento = null;
+        try {
+            idEvento = usuario.readLine();
+        } catch (IOException ex) {
+            Logger.getLogger(ControladorColecciones.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Evento aux = mapaEventos.get(Integer.parseInt(idEvento));
+        if(aux == null){
+            System.out.println("Evento no Existe");
+            return;
+        }
+        Entrada entradaAux = null;
+        entradaAux = aux.getLastEntrada();
+        if(entradaAux == null){
+            System.out.println("No hay Entradas en el evento");
+            return;
+        }
+        aux.mostrarEvento();
+        entradaAux.mostrarEntrada();
+        
+        Cliente cl = null;
+        cl = mapaClientes.get(entradaAux.getRutPersona());
+        cl.mostrarPersona();
+    }  
 }
 
 

@@ -24,7 +24,6 @@ public class Main {
         listas.importarPersonasCSV();
         
         
-        
         Scanner sn = new Scanner(System.in);
         boolean salir = false;
         int opcion; //Guardaremos la opcion del usuario
@@ -42,7 +41,8 @@ public class Main {
             System.out.println("9. Borrar Evento");
             System.out.println("10. Vender Entrada");
             System.out.println("11. Mostrar clientes con Decuentos");
-            System.out.println("12. Salir");
+            System.out.println("12. Mostrar ultima Entrada de un Evento");
+            System.out.println("13. Salir");
  
             try {
  
@@ -94,11 +94,14 @@ public class Main {
                         listas.PersonasBeneficiadas();
                         break;
                     case 12:
+                        listas.SeleccionarUltimaEntrada();
+                        break;
+                    case 13:
                         salir = true;
                         break;
                         
                     default:
-                        System.out.println("Solo números entre 1 y 12");
+                        System.out.println("Solo números entre 1 y 13");
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Debes insertar un número");

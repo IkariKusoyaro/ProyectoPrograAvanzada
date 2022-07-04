@@ -222,6 +222,11 @@ public class Evento {
     //Mostrar Todas las Entradas de un evento especifico
     //codigo
     //"Id Entrada","Numero Asiento","Rut Persona","Evento"
+
+    /**
+     * Genera un String con la lista de entradas del evento 
+     * @return String
+     */
     public String generarReporteEntradas(){
         String entradas = "";
         for(int i = 0; i < listaEntradas.size();i++){
@@ -231,5 +236,19 @@ public class Evento {
             return null;
         }
         return entradas;
+    }
+    
+    /**
+     * Metodo que retorna la ultima entrada ingresada 
+     * @return Entrada
+     */
+    public Entrada getLastEntrada(){
+        ArrayList<Entrada> listaAux = new ArrayList();
+        if(entradasNoNulas() == null) return null;
+        else listaAux.addAll(entradasNoNulas());
+        if(listaAux.isEmpty()) return null;
+        Entrada aux = listaAux.get((listaAux.size()) - 1);
+        if( aux == null) return null;
+        else return aux;
     }
 }

@@ -83,4 +83,11 @@ public class Entrada {
         
     }
     
+    /**
+     * Mostrar solo la id y el asiento de la Entrada 
+     */
+    public void mostrarEntrada(){
+        System.out.println("Numero de Serie: "  + numSerie + " - Asiento: "+ numAsiento);
+    }
+    
 }
